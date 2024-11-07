@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Styles de base */
+        body {
+            font-family: 'Assistant', sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #6fb98f;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .centered-columns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .column {
+            width: 300px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            background-color: #6fb98f;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        tbody td {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .result {
+            font-size: 1.2em;
+            color: #333;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .pack-gratuit {
+            color: #6fb98f;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .delta {
+            font-weight: bold;
+        }
+
+        .delta.positive {
+            color: green;
+        }
+
+        .delta.negative {
+            color: red;
+        }
+    </style>
+    <title>Comparatif de Réseaux de Mandataires</title>
+</head>
+<body>
+
+    <h2>Comparatif de Réseaux de Mandataires</h2>
+
+    <div class="table-container">
+        <div class="centered-columns">
+            <div class="column">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Votre situation actuelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="data-row">
+                                <label for="honoraires-actuels">Honoraires annuels HT (€) :</label>
+                                <input type="number" id="honoraires-actuels" placeholder="Ex : 28 000" value="28000" oninput="calculateHonoraires()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="data-row">
+                                <label for="pack-mensuel">Forfait mensuel d'adhésion HT :</label>
+                                <input type="number" id="pack-mensuel" placeholder="Prix du pack" value="0" oninput="calculateHonoraires()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="data-row">
+                                <label for="forfait-pubs">Forfait diffusion mensuel :</label>
+                                <input type="number" id="forfait-pubs" placeholder="Forfait pubs" value="0" oninput="calculateHonoraires()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="data-row">
+                                <label for="commission">Votre pourcentage actuel :</label>
+                                <input type="number" id="commission" placeholder="Commission en %" value="0" oninput="calculateHonoraires()">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="result-actuel" class="result result-actuel">0,00 € /an<br>Avec votre affiliation actuelle</div>
+            </div>
+
+            <div class="column">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Avec Meilleur Conseil Immo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="data-row pack-gratuit">PACK GRATUIT</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="result-mci" class="result">0,00 € /an <span class="delta">(+0,00 €)</span><br>Avec Meilleur Conseil Immo</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatNumber(num) {
+            return num.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function calculateHonoraires() {
+            const honorairesActuels = parseFloat(document.getElementById("honoraires-actuels").value) || 0;
+            const packMensuel = parseFloat(document.getElementById("pack-mensuel").value) || 0;
+            const forfaitPubs = parseFloat(document.getElementById("forfait-pubs").value) || 0;
+            const commissionActuelle = parseFloat(document.getElementById("commission").value) / 100 || 0;
+
+            // Calcul des honoraires actuels
+            const annualCommission = honorairesActuels * commissionActuelle; // Total des commissions
+            const honorairesRestants = annualCommission - (packMensuel * 12) - forfaitPubs; // Honoraires restants après frais
+
+            // Mise à jour des résultats de l'offre actuelle
+            document.getElementById("result-actuel").innerHTML = formatNumber(honorairesRestants) + " € /an<br>Avec votre affiliation actuelle";
+
+            // Calcul pour Meilleur Conseil Immo
+            let honorairesMCI = 0;
+            if (honorairesActuels <= 35000) {
+                honorairesMCI = honorairesActuels * 0.75;
+            } else if (honorairesActuels <= 75000) {
+                honorairesMCI = 35000 * 0.75 + (honorairesActuels - 35000) * 0.85;
+            } else {
+                honorairesMCI = 35000 * 0.75 + 40000 * 0.85 + (honorairesActuels - 75000) * 1.00;
+            }
+
+            // Mise à jour des honoraires pour Meilleur Conseil Immo
+            const resultMCI = document.getElementById("result-mci");
+            const delta = honorairesMCI - honorairesRestants;
+            resultMCI.innerHTML = formatNumber(honorairesMCI) + " € /an <span class='delta " + (delta >= 0 ? "positive" : "negative") + "'>(" + (delta >= 0 ? "+" : "") + formatNumber(delta) + " €)</span><br>Avec Meilleur Conseil Immo";
+        }
+
+        // Initial call to populate results
+        calculateHonoraires();
+    </script>
+</body>
+</html>
