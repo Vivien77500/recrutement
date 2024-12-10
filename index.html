@@ -41,7 +41,7 @@
 
         .intro-text {
             width: 60%;
-            font-size: 1.3em; /* Agrandit le texte d'introduction */
+            font-size: 1.3em;
             color: #333;
             text-align: left;
             margin-right: 20px;
@@ -103,7 +103,7 @@
         }
 
         .result {
-            font-size: 2em; /* Agrandit le texte des résultats */
+            font-size: 2em;
             color: #333;
             text-align: center;
             margin-top: 10px;
@@ -257,12 +257,10 @@
     </div>
 
     <script>
-        // Fonction pour ouvrir le popup
         function openPopup() {
             document.getElementById("popupForm").style.display = "flex";
         }
 
-        // Fonction pour fermer le popup
         function closePopup() {
             document.getElementById("popupForm").style.display = "none";
         }
@@ -276,12 +274,10 @@
             const forfaitMensuel = parseFloat(document.getElementById("pack-mensuel").value) || 0;
             const commission = parseFloat(document.getElementById("commission").value) || 0;
 
-            // Calcul pour l'affiliation actuelle
-            const resultActuel = ((honorairesActuels / 1.2) - (forfaitMensuel * 12)) * (commission / 100);
+            const resultActuel = ((1.2 * honorairesActuels / 100) * commission) - (forfaitMensuel * 12);
             document.getElementById("result-actuel").innerHTML = formatNumber(resultActuel) + " € /an<br>Avec votre affiliation actuelle";
 
-            // Calcul pour Meilleur Conseil Immo avec paliers après retrait de TVA
-            let honorairesHT = honorairesActuels / 1.2; // Retirer la TVA
+            let honorairesHT = honorairesActuels / 1.2;
             let resultMCI = 0;
 
             if (honorairesHT <= 35000) {
