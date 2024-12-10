@@ -254,25 +254,29 @@
     <button class="contact-button" onclick="openPopup()">Demande d'informations</button>
 
     <!-- Popup Modal -->
-    <div id="popupForm">
-        <div class="modal-content">
-            <h3>Formulaire de Contact</h3>
-            <form action="https://formspree.io/f/xbljgjza" method="POST">
-                <input type="text" name="name" placeholder="Nom" required><br><br>
-                <input type="text" name="prenom" placeholder="Prénom" required><br><br>
-                <input type="tel" name="telephone" placeholder="Téléphone" pattern="\d{10}" required><br><br>
-                <input type="email" name="email" placeholder="Mail" required><br><br>
-                <textarea name="message" placeholder="Message" required></textarea><br><br>
-                <button type="submit" class="contact-button">Envoyer</button>
-            </form>
-            <button class="close-btn" onclick="closePopup()">×</button>
-        </div>
+<div id="popupForm">
+    <div class="modal-content">
+        <h3>Formulaire de Contact</h3>
+        <form action="https://formspree.io/f/xbljgjza" method="POST">
+            <input type="text" id="name" name="name" placeholder="Nom" required><br><br>
+            <input type="text" name="prenom" placeholder="Prénom" required><br><br>
+            <input type="tel" name="telephone" placeholder="Téléphone" pattern="\d{10}" required><br><br>
+            <input type="email" name="email" placeholder="Mail" required><br><br>
+            <textarea name="message" placeholder="Message" required></textarea><br><br>
+            <button type="submit" class="contact-button" aria-label="Envoyer le formulaire">Envoyer</button>
+        </form>
+        <button class="close-btn" onclick="closePopup()" aria-label="Fermer le formulaire">×</button>
     </div>
+</div>
+
 
     <script>
         function openPopup() {
-            document.getElementById("popupForm").style.display = "flex";
-        }
+    const popup = document.getElementById("popupForm");
+    popup.style.display = "flex";
+    popup.setAttribute("aria-hidden", "false");
+    document.getElementById("name").focus(); // Met le focus sur le champ "Nom"
+}
 
         function closePopup() {
             document.getElementById("popupForm").style.display = "none";
