@@ -136,39 +136,52 @@
             margin-right: auto;
         }
 
-        /* Styles pour le modal */
-        #popupForm {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-        }
+       /* Styles pour le modal */
+#popupForm {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
 
-        .modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-            position: relative;
-        }
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    position: relative;
+    font-family: 'Assistant', sans-serif; /* Même police que la page principale */
+}
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5em;
-            cursor: pointer;
-            background-color: transparent;
-            border: none;
-            color: #6fb98f;
-        }
+.modal-content input,
+.modal-content textarea {
+    width: 90%; /* Champs légèrement plus larges */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em; /* Taille de police cohérente */
+    box-sizing: border-box;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #6fb98f;
+}
+
     </style>
     <title>Comparatif de Réseaux de Mandataires</title>
 </head>
