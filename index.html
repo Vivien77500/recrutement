@@ -274,7 +274,7 @@
             const forfaitMensuel = parseFloat(document.getElementById("pack-mensuel").value) || 0;
             const commission = parseFloat(document.getElementById("commission").value) || 0;
 
-            const resultActuel = (honorairesActuels * (commission / 100)) - (forfaitMensuel * 12);
+            const resultActuel = ((honorairesActuels / 1.2) * (commission / 100)) - (forfaitMensuel * 12);
 
             document.getElementById("result-actuel").innerHTML = formatNumber(resultActuel) + " € /an<br>Avec votre affiliation actuelle";
 
