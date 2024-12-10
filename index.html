@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Styles de base */
         body {
             font-family: 'Assistant', sans-serif;
             color: #333;
@@ -108,13 +109,6 @@
             margin-top: 10px;
         }
 
-        /* Agrandir le résultat MCI */
-        #result-mci {
-            font-size: 2em; /* Taille augmentée */
-            font-weight: bold; /* Gras pour mise en valeur */
-            color: #333;
-        }
-
         .delta {
             font-weight: bold;
         }
@@ -140,6 +134,89 @@
             text-align: center;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Styles Responsives */
+        @media (max-width: 1200px) {
+            .intro-text {
+                width: 100%;
+                margin-right: 0;
+                text-align: center;
+            }
+
+            .image-container {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .intro-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .table-container {
+                flex-direction: column;
+            }
+
+            .column {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header img {
+                height: 80px;
+            }
+
+            .intro-text {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            table thead th {
+                font-size: 0.9em;
+            }
+
+            input[type="number"] {
+                font-size: 1em;
+                padding: 8px;
+            }
+
+            .contact-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            .result {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .intro-text {
+                font-size: 0.9em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .result {
+                font-size: 1em;
+            }
+
+            .contact-button {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
         }
     </style>
     <title>Comparatif de Réseaux de Mandataires</title>
