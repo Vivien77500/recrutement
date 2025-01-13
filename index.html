@@ -34,21 +34,22 @@
 
         .intro-section {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             margin-bottom: 40px;
         }
 
         .intro-text {
-            width: 60%;
+            width: 100%;
             font-size: 1.3em;
             color: #333;
-            text-align: left;
-            margin-right: 20px;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .image-container {
-            width: 35%;
+            width: 60%;
         }
 
         .image-container img {
@@ -138,22 +139,6 @@
 
         /* Styles Responsives */
         @media (max-width: 1200px) {
-            .intro-text {
-                width: 100%;
-                margin-right: 0;
-                text-align: center;
-            }
-
-            .image-container {
-                width: 100%;
-                margin-top: 20px;
-            }
-
-            .intro-section {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .table-container {
                 flex-direction: column;
             }
@@ -167,10 +152,6 @@
         @media (max-width: 768px) {
             header img {
                 height: 80px;
-            }
-
-            .intro-text {
-                font-size: 1em;
             }
 
             h2 {
@@ -199,10 +180,6 @@
         @media (max-width: 480px) {
             body {
                 padding: 10px;
-            }
-
-            .intro-text {
-                font-size: 0.9em;
             }
 
             h2 {
@@ -234,7 +211,7 @@
                 Ne cherchez plus, Meilleur Conseil Immo est la solution qu’il vous faut !
             </div>
             <div class="image-container">
-                <img src="img1.jpg" alt="Image illustrant Meilleur Conseil Immo">
+                <img src="img1.png" alt="Image illustrant Meilleur Conseil Immo">
             </div>
         </div>
 
