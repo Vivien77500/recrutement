@@ -48,16 +48,6 @@
             margin-bottom: 20px;
         }
 
-        .image-container {
-            width: 90%;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            border: none;
-        }
-
         h2 {
             color: #6fb98f;
             font-weight: 600;
@@ -65,52 +55,50 @@
             margin-bottom: 20px;
         }
 
-        .table-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin-top: 20px;
+        .form-section {
+            margin-bottom: 20px;
+            display: none; /* Les sections sont cachées par défaut */
         }
 
-        .column {
-            width: 48%;
-            text-align: center;
+        .form-section.active {
+            display: block; /* Une section active est visible */
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        thead th {
-            background-color: #6fb98f;
-            color: white;
-            padding: 10px;
-            text-align: left;
-        }
-
-        tbody td {
-            padding: 10px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
 
         input[type="number"] {
             width: 100%;
             padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
             box-sizing: border-box;
-            margin: 5px 0;
-            font-size: 1.1em;
+        }
+
+        button {
+            background-color: #6fb98f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #5aa783;
         }
 
         .result {
-            font-size: 1.5em;
-            color: #333;
             text-align: center;
-            margin-top: 10px;
-        }
-
-        .delta {
+            margin-top: 20px;
+            font-size: 1.5em;
             font-weight: bold;
         }
 
@@ -120,84 +108,6 @@
 
         .delta.negative {
             color: red;
-        }
-
-        .contact-button {
-            background-color: transparent;
-            color: #6fb98f;
-            padding: 10px 20px;
-            border: 2px solid #6fb98f;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 20px;
-            border-radius: 5px;
-            display: block;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Styles Responsives */
-        @media (max-width: 1200px) {
-            .table-container {
-                flex-direction: column;
-            }
-
-            .column {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header img {
-                height: 150px; /* Réduit pour les petits écrans */
-            }
-
-            .intro-text {
-                font-size: 1.5em; /* Taille réduite pour petits écrans */
-            }
-
-            h2 {
-                font-size: 1.5em;
-            }
-
-            table thead th {
-                font-size: 0.9em;
-            }
-
-            input[type="number"] {
-                font-size: 1em;
-                padding: 8px;
-            }
-
-            .contact-button {
-                font-size: 0.9em;
-                padding: 8px 16px;
-            }
-
-            .result {
-                font-size: 1.2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            h2 {
-                font-size: 1.2em;
-            }
-
-            .result {
-                font-size: 1em;
-            }
-
-            .contact-button {
-                font-size: 0.8em;
-                padding: 6px 12px;
-            }
         }
     </style>
     <title>Comparatif de Réseaux de Mandataires</title>
@@ -214,64 +124,76 @@
                 Vous êtes mandataire immobilier et souhaitez maximiser vos revenus tout en simplifiant votre activité ?
                 Ne cherchez plus, Meilleur Conseil Immo est la solution qu’il vous faut !
             </div>
-            <div class="image-container">
-                <img src="img1.png" alt="Image illustrant Meilleur Conseil Immo">
-            </div>
         </div>
 
         <h2>Comparatif de Réseaux de Mandataires</h2>
-        <div class="table-container">
-            <div class="column">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Votre situation actuelle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <label for="honoraires-actuels">Honoraires annuels HT (€) :</label>
-                                <input type="number" id="honoraires-actuels" placeholder="Ex : 28000" value="28000" oninput="calculateHonoraires()">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="pack-mensuel">Forfait mensuel d'adhésion HT :</label>
-                                <input type="number" id="pack-mensuel" placeholder="Prix du pack" value="0" oninput="calculateHonoraires()">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="commission">Votre pourcentage actuel :</label>
-                                <input type="number" id="commission" placeholder="Commission en %" value="75" oninput="calculateHonoraires()">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div id="result-actuel" class="result">0,00 € /an<br>Avec votre affiliation actuelle</div>
-            </div>
 
-            <div class="column">
-                <img src="logomci2.png" alt="Logo Meilleur Conseil Immo" style="width: 80%; margin-bottom: 10px;">
-                <div id="result-mci" class="result">0,00 € /an <span class="delta">(+0,00 €)</span><br>Avec Meilleur Conseil Immo</div>
-            </div>
+        <!-- Section 1 -->
+        <div id="section1" class="form-section active">
+            <label for="honoraires-actuels">Honoraires annuels HT (€) :</label>
+            <input type="number" id="honoraires-actuels" placeholder="Ex : 50000">
+            <button onclick="validateSection(1)">Valider</button>
+        </div>
+
+        <!-- Section 2 -->
+        <div id="section2" class="form-section">
+            <label for="pack-mensuel">Forfait mensuel d'adhésion HT :</label>
+            <input type="number" id="pack-mensuel" placeholder="Ex : 200">
+            <button onclick="validateSection(2)">Valider</button>
+        </div>
+
+        <!-- Section 3 -->
+        <div id="section3" class="form-section">
+            <label for="commission">Votre pourcentage actuel :</label>
+            <input type="number" id="commission" placeholder="Ex : 75">
+            <button onclick="validateSection(3)">Valider</button>
+        </div>
+
+        <!-- Résultats -->
+        <div id="results" class="form-section">
+            <div id="result-actuel" class="result"></div>
+            <div id="result-mci" class="result"></div>
         </div>
     </div>
 
     <script>
+        function validateSection(section) {
+            // Validation de chaque section
+            const value = document.querySelector(`#section${section} input`).value;
+
+            // Vérifier si la valeur est bien remplie
+            if (!value || isNaN(value)) {
+                alert("Veuillez remplir correctement ce champ.");
+                return;
+            }
+
+            // Afficher la section suivante
+            const currentSection = document.getElementById(`section${section}`);
+            const nextSection = document.getElementById(`section${section + 1}`);
+            currentSection.classList.remove("active");
+
+            if (nextSection) {
+                nextSection.classList.add("active");
+            } else {
+                // Tous les champs sont remplis, afficher les résultats
+                calculateResults();
+            }
+        }
+
         function formatNumber(num) {
             return num.toLocaleString('fr-FR', { style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
-        function calculateHonoraires() {
+        function calculateResults() {
             const honorairesActuels = parseFloat(document.getElementById("honoraires-actuels").value) || 0;
             const forfaitMensuel = parseFloat(document.getElementById("pack-mensuel").value) || 0;
             const commission = parseFloat(document.getElementById("commission").value) || 0;
 
+            // Calcul de l'affiliation actuelle
             const resultActuel = ((honorairesActuels / 1.2) * (commission / 100)) - (forfaitMensuel * 12);
             document.getElementById("result-actuel").innerHTML = formatNumber(resultActuel) + " € /an<br>Avec votre affiliation actuelle";
 
+            // Calcul pour Meilleur Conseil Immo
             let honorairesHT = honorairesActuels / 1.2;
             let resultMCI = 0;
 
@@ -286,6 +208,9 @@
             const delta = resultMCI - resultActuel;
             const resultMCIText = formatNumber(resultMCI) + " € /an <span class='delta " + (delta > 0 ? "positive" : "negative") + "'>(" + (delta > 0 ? "+" : "") + formatNumber(delta) + " €)</span><br>Avec Meilleur Conseil Immo";
             document.getElementById("result-mci").innerHTML = resultMCIText;
+
+            // Afficher la section des résultats
+            document.getElementById("results").classList.add("active");
         }
     </script>
 </body>
